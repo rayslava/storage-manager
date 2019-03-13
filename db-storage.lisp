@@ -1,8 +1,8 @@
-(defpackage :storagesite.db-storage
-  (:use :cl :postmodern)
+(defpackage :storage-manager.db-storage
+  (:use :cl :postmodern :storage-manager.config)
   (:export :create-tables))
 
-(in-package :storagesite.db-storage)
+(in-package :storage-manager.db-storage)
 
 (defclass storage ()
   ((id :col-type bigserial :initarg :id :accessor storage-id)
@@ -50,7 +50,7 @@
 	obj
       (format stream "~a, name: ~a" l n))))
 
-(connect-toplevel "stordb" "storuser" "storpass" "postgres")
+(connect-toplevel *postgres-db* *postgres-user* *postgres-pass* *postgres-host*)
 
 (query (:drop-table 'chemical))
 (query (:drop-table 'storage))
