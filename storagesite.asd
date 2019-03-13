@@ -13,7 +13,14 @@
   :long-description "Lisp implementation of home storage management"
   :depends-on (:hunchentoot :cl-who :ht-simple-ajax :cl-css :local-time :postmodern :fiveam)
   :in-order-to ((test-op (test-op "storage-manager/tests")))
-  :components ((:file "site")
+  :components ((:module "site"
+			:components ((:file "config")
+				     (:file "static"
+					    :depends-on ("config"))
+				     (:file "style"
+					    :depends-on ("config"))
+				     (:file "site"
+					    :depends-on ("style" "static"))))
 	       (:file "config")
 	       (:file "db-storage"
 		      :depends-on ("config"))

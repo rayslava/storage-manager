@@ -7,7 +7,7 @@
 
 (in-suite all-tests)
 
-(defun test-quasi ()
+(defun test-storage-manager ()
   (run! 'all-tests))
 
 (test dummy-tests

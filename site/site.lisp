@@ -1,13 +1,16 @@
 ;; Main web-server file
 ;; (declaim (optimize (debug 3)))
 
-(defpackage :site
+(defpackage :storage-manager.site
   (:use :cl :hunchentoot :cl-who :ht-simple-ajax
-	:asdf :site.static :site.config :site.db-manage)
+	:asdf :storage-manager.config
+	:storage-manager.site.config
+	:storage-manager.site.static
+	:storage-manager.site.style)
   (:export :start-server :stop-server :refresh :sh
 	   :*ajax-processor* :say-hi))
 
-(in-package :site)
+(in-package :storage-manager.site)
 
 (setf (html-mode) :html5)
 
@@ -58,7 +61,7 @@
 		      ;; catch all
 		      (lambda (request)
 			(declare (ignore request))
-			(redirect "/about" :host "rayslava.com" :protocol :https)))))
+			(redirect "/about" :host *site-host* :protocol :https)))))
   (init-static-handlers))
 
 (defun stop-server ()

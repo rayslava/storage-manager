@@ -1,4 +1,4 @@
-(defpackage :storagesite.config
+(defpackage :storage-manager.config
   (:use :cl :postmodern)
   (:export :create-tables
 	   :*postgres-host*
@@ -15,3 +15,5 @@
 (defvar *postgres-pass* "storpass" "Database password")
 
 (defvar *postgres-db* "stor" "Database name")
+
+(defvar *site-host* "localhost" "Web UI hostname")
