@@ -6,7 +6,7 @@
 	   :*postgres-pass*
 	   :*postgres-db*))
 
-(in-package :storagesite.config)
+(in-package :storage-manager.config)
 
 (defvar *postgres-host* "postgres" "Database host")
 
