@@ -1,6 +1,6 @@
 ;;;; tests/main.lisp
 
-(in-package #:storage-manager-tests)
+(in-package :storage-manager-tests)
 
 (def-suite all-tests
     :description "The master suite of all storage-manager tests.")

@@ -1,5 +1,6 @@
-(defpackage :storage-manager.site.static
-  (:use :cl :cl-who :hunchentoot :storage-manager.site.config)
+(defpackage #:storage-manager.site.static
+  (:use #:cl #:cl-who #:hunchentoot
+	#:storage-manager.site.config)
   (:export :generate-static-table))
 
 (in-package :storage-manager.site.static)

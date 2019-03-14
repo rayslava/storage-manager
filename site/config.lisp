@@ -1,5 +1,5 @@
-(defpackage :storage-manager.site.config
-  (:use :cl :asdf)
+(defpackage #:storage-manager.site.config
+  (:use #:cl #:asdf)
   (:export :*admin-login*
 	   :*admin-password*
 	   :*access-log-file*
@@ -14,6 +14,9 @@
 	   :*distribution*))
 
 (in-package :storage-manager.site.config)
+
+(defparameter *site-host* "localhost"
+  "Admin page password")
 
 (defvar *admin-login* "admin"
   "Admin page password")

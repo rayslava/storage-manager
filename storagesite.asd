@@ -23,16 +23,15 @@
 					    :depends-on ("style" "static"))))
 	       (:file "config")
 	       (:file "db-storage"
-		      :depends-on ("config"))
-	       (:file "db-manage"
-		      :depends-on ("db-storage"))))
+		      :depends-on ("config"))))
 
 (defsystem :storage-manager/tests
-  :depends-on (:storage-manager :fiveam)
+  :depends-on (:storage-manager #:fiveam)
   :components ((:module "tests"
-            :serial t
-            :components ((:file "package")
-                         (:file "main"
-				:depends-on ("package")))))
-    :perform (test-op (o s)
-		      (uiop:symbol-call :fiveam :run! 'storage-manager-tests:all-tests)))
+			:components ((:file "package")
+				     (:file "main"
+					    :depends-on ("package"))
+				     (:file "db"
+					    :depends-on ("package")))))
+  :perform (test-op (o c)
+		    (uiop:symbol-call :fiveam :run! :all-tests)))

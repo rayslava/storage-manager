@@ -1,6 +1,8 @@
 (defpackage :storage-manager.db-storage
   (:use :cl :postmodern :storage-manager.config)
-  (:export :create-tables))
+  (:export :storage
+	   :storage-entity
+	   :chemical))
 
 (in-package :storage-manager.db-storage)
 
@@ -49,24 +51,3 @@
 		     (l storage-location))
 	obj
       (format stream "~a, name: ~a" l n))))
-
-(connect-toplevel *postgres-db* *postgres-user* *postgres-pass* *postgres-host*)
-
-(query (:drop-table 'chemical))
-(query (:drop-table 'storage))
-(create-table 'storage)
-(create-table 'chemical)
-
-(let ((stor (make-instance 'storage :location "Kitchen" :name "ok")))
-  (insert-dao stor))
-
-(let ((stor (make-instance 'storage :location "wardrobe 2" :name "lol")))
-  (insert-dao stor))
-
-
-(let ((chem (make-instance 'chemical :name "ХИМИЯ" :comment "Злая химия!" :volume 1 :stor-id 1))
-      (chem2 (make-instance 'chemical :name "Химия" :comment "Злая химия N2" :volume 8 :stor-id 2))
-      (chem3 (make-instance 'chemical :name "Зубная паста" :comment "Обычной породы" :volume 1 :stor-id 1)))
-  (mapcar #'insert-dao (list chem chem2 chem3)))
-
-(print (format nil "~a" (select-dao 'chemical (:= 'stor-id 1))))

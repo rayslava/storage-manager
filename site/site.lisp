@@ -3,7 +3,6 @@
 
 (defpackage :storage-manager.site
   (:use :cl :hunchentoot :cl-who :ht-simple-ajax
-	:asdf :storage-manager.config
 	:storage-manager.site.config
 	:storage-manager.site.static
 	:storage-manager.site.style)
@@ -54,7 +53,7 @@
   "Set up dispatch table with file handlers for hunchentoot"
   (setq *dispatch-table*
 	(concatenate 'list
-		     (site.static:generate-static-table)
+		     (storage-manager.site.static:generate-static-table)
 		     (list
 		      'dispatch-easy-handlers
 		      (create-ajax-dispatcher *ajax-processor*)

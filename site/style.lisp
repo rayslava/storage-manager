@@ -1,6 +1,5 @@
 (defpackage :storage-manager.site.style
-  (:use :cl :hunchentoot :cl-css
-	:asdf :storage-manager.site))
+  (:use :cl :hunchentoot :cl-css))
 
 (in-package :storage-manager.site.style)
 
